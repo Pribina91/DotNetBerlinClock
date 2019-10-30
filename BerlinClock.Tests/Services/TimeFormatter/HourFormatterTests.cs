@@ -10,7 +10,7 @@ using Assert = NUnit.Framework.Assert;
 namespace BerlinClock.Tests.Services.TimeFormatter
 {
     [TestClass]
-    public class HourFormatterTests
+    public class HoursFormatterTests
     {
         private IColorProvider _redColorProvider;
 

@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace BerlinClock.Tests.Services.TimeFormatter
 {
     [TestFixture()]
-    public class SecondFormatterTests
+    public class SecondsFormatterTests
     {
         private IColorProvider _yellowColorProvider;
 

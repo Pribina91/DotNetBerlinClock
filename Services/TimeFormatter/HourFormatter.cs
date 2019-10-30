@@ -7,6 +7,9 @@ namespace BerlinClock.Services.TimeFormatter
 {
     public class HourFormatter : ITimeFormatter
     {
+        private const int FirstLineLampsCount = 4;
+        private const int SecondLineLampsCount = 4;
+
         private readonly IColorProvider _colorProvider;
 
         public HourFormatter(IColorProvider colorProvider)
@@ -21,7 +24,7 @@ namespace BerlinClock.Services.TimeFormatter
                 throw new ArgumentNullException();
             }
 
-            if (time.Hours < 0 || time.Minutes < 0 || time.Seconds < 0)
+            if (time.Hours < 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -29,7 +32,7 @@ namespace BerlinClock.Services.TimeFormatter
             var sb = new StringBuilder();
 
             var firstLineMultiplier = time.Hours / 5;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < FirstLineLampsCount; i++)
             {
                 sb.Append(_colorProvider.GetColor(i < firstLineMultiplier));
             }
@@ -37,7 +40,7 @@ namespace BerlinClock.Services.TimeFormatter
             sb.AppendLine();
 
             var secondLineMultiplier = time.Hours % 5;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < SecondLineLampsCount; i++)
             {
                 sb.Append(_colorProvider.GetColor(i < secondLineMultiplier));
             }
